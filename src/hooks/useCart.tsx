@@ -80,9 +80,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const removeProduct = (productId: number) => {
     try {
-      // TODO
+      const product = cart.find(product => product.id === productId);
+
+      const updatedCart = cart.filter(product => product.id !== productId);
+
+      setCart(updatedCart);
     } catch {
-      // TODO
+      toast.error('Erro na remoção do produto.');
     }
   };
 
